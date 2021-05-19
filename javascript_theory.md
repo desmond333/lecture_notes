@@ -158,8 +158,8 @@ let user = {};  // синтаксис "литерал объекта"`
 3.) Возвращается значение this.  
 
 Другими словами, вызов new User(...) делает примерно вот что:  
-`function User(name) {  
-  // this = {};  (неявно)  
+`function User(name) { <br/>
+  // this = {};  (неявно)  <br/>
   // добавляет свойства к this  
   this.name = name;  
   this.isAdmin = false;  
