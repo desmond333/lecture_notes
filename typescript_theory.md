@@ -8,19 +8,19 @@
 #### 3. string: строки  
 #### 4. Symbol  
 #### 5. null и undefined, отличия от js
-//javascript  
-typeof null это object  
-typeof undefined это undefined  
+`//javascript`  
+`typeof null это object`  
+`typeof undefined это undefined`  
 
-//typescript  
-const u: null = null  
-const u: undefined = undefined  
+`//typescript`  
+`const u: null = null`  
+`const u: undefined = undefined`  
 
 #### 6. Array: массивы  
 `let list: number[] = [1, 2, 3];`  
 `let list: Array<number> = [1, 2, 3]; //Generic type`  
 
-Массивы определяются с помощью выражения [] и также являются строго типизированными. То есть если изначально массив содержит строки, то в будущем он сможет работать только со строками.
+Массивы определяются с помощью выражения [ ] и также являются строго типизированными. То есть если изначально массив содержит строки, то в будущем он сможет работать только со строками.  
 `let list: number[] = [10, 20, 30];`  
 `let colors: string[] = ["red", "green", "blue"];`  
 `console.log(list[0]);`  
@@ -32,7 +32,7 @@ const u: undefined = undefined
 `let names: Array<string> = ["Tom", "Bob", "Alice"];`  
 `console.log(names[1]);  // Bob`  
 
-Но фактически такие формы массивов, как number[] или string[] являются сокращением соответственно типов Array<number> или Array<string>  
+Но фактически такие формы массивов, как number[ ] или string[ ] являются сокращением соответственно типов Array<number> или Array<string>  
 В остальном массивы в TypeScript поддерживают все те же операции, что и массивы в JavaScript.  
 
 #### 7. Typle или кортежи
@@ -61,7 +61,7 @@ const u: undefined = undefined
 Означает отсутствие значения и используется в качестве возвращаемого типа функций, которые генерируют или возвращают ошибку  
 
 #### 13. Псевдонимы Типов (Type Aliases)
-TypeScript позволяет определять псевдонимы типов с помощью ключевого слова type:
+TypeScript позволяет определять псевдонимы типов с помощью ключевого слова type:  
 `type id = number | string;`  
 `let userId : id = 2;`  
 `console.log(`Id: ${userId}`);`  
