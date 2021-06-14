@@ -1,12 +1,42 @@
 ## Июнь 2021 года
 # Коспект по практике Javascript для подготовки к собеседованию на позицию junior frontend
 
-## Легкие задачи
-### Функция проверки палиндрома
+## Обычные задачи
+### Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString»
+//на примере 'listStyleImage'
+const camelize = (str) => {
+  str = str.split('-') //превращаем строку в массив
+  let result = str[0]  //result = list
+  str.map((word, index) => { //перебираем массив
+    if (index > 0) { // следующие слова после слова list
+      result += word[0].toUpperCase() + word.slice(1) //добавляем первую букву и остальное слово
+    }
+  })
+  return result //возращаем 'listStyleImage'
+}
 
-## Сложные задачи
+console.log(camelize('background-color')) //'backgroundColor'
+console.log(camelize('list-style-image')) //'listStyleImage'
+console.log(camelize('-webkit-transition')) //'WebkitTransition'
+
+### Функция проверки палиндрома
+let palindrome = (str) => str.toLowerCase() === str.toLowerCase().split('').reverse().join('')  
+Возращаем функцией тип boolean, получаемый при сравнении изначальной строки и перевернутой (буквы приводим в один регистр).  
+
+console.log(palindrome('racecar')) // true
+console.log(palindrome('table')) // false
+console.log(palindrome('Анна')) // true
+
+//Более сложный вариант
+let isPalindrome = (str) => {
+  str = str.toLowerCase().split(' ').join('') //убираем пробелы и приводим все буквы к одному регистру в изначальной строке
+  return str === str.split('').reverse().join('') //возвращаем результат сравнения
+}
+
+console.log(isPalindrome('А роза упала на лапу Азора')) // true
+
+## Более сложные задачи
 ### Замыкание
-Популярная задача на собеседовании:  
 const arr = [10, 12, 15, 21];  
 for (var i = 0; i < arr.length; i++) {  
   setTimeout(function() {  
