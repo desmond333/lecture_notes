@@ -29,11 +29,13 @@
 ```
 
 ### Какая разница между тэгами <strong><em> и <b><i>?
+Семантический смысл:  
 ```html
-<!-- semantic meaning -->
 <strong></strong>
 <em></em>
-<!-- only visual changes -->
+```
+Только визуальные изменения:  
+```html
 <b></b>
 <i></i>
 ```  
