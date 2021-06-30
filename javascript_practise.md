@@ -92,3 +92,75 @@ for (let i = 0; i < arr.length; i++) {
   }, 3000);  
 }
 ```
+
+### Сортировка массива объектов по дате
+```javascript
+/*
+Есть массив операций.
+Необходимо операции отсортировать по дате и сгруппировать их по году, а в качестве
+значений представить массивы c датами в формате MM-DD.
+Пример результата:
+    result = {
+            "2017": [
+                "07-31",
+                "08-22"
+            ],
+            "2018": [
+                "01-01"
+                "02-22"
+            ]
+        }
+*/
+const operations = [
+    {"date": "2017-07-31", "amount": "5422"},
+    {"date": "2017-06-30", "amount": "5220"},
+    {"date": "2017-05-31", "amount": "5365"},
+    {"date": "2017-08-31", "amount": "5451"},
+    {"date": "2017-09-30", "amount": "5303"},
+    {"date": "2018-03-31", "amount": "5654"},
+    {"date": "2017-10-31", "amount": "5509"},
+    {"date": "2017-12-31", "amount": "5567"},
+    {"date": "2018-01-31", "amount": "5597"},
+    {"date": "2017-11-30", "amount": "5359"},
+    {"date": "2018-02-28", "amount": "5082"},
+    {"date": "2018-04-14", "amount": "2567"}
+];
+```
+
+Мое решение (не самое удачное):  
+```javascript
+const sortOperations = operations => {
+    const result = {}
+    const operationsSortByDate = operations.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+    });
+    operationsSortByDate.forEach(operation=>{
+        const dateArr = operation['date'].split('-')
+        const year = dateArr[0]
+        result[year] = []
+    })
+    operationsSortByDate.forEach(operation => {
+        const dateArr = operation['date'].split('-')
+        const year = dateArr[0]
+        const month = dateArr[1] + '-' + dateArr[2]
+        if ([year] in result) {
+            result[year].push(month)
+        }
+    })
+    return result
+}
+```
+
+Лаконичное решение:  
+```javascript
+const sortOperations = operations => {
+    operations.reduce((acc, cur) => {
+    const dateSplit = cur.date.split(‘-’);
+    const key = dateSplit[0];
+    return {
+      ...acc,
+      [key]: [...(acc[key]? acc[key] : []), dateSplit.slice(1).join(‘-’)].sort()
+    }
+  } , {})
+}
+```
